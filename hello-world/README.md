@@ -1,5 +1,6 @@
 # 1 "Hello World"
 
+
 ## 介绍
 RabbitMQ是一个消息代理：它接受并转发消息。你可以将它想象为邮局：当你将要投递的邮件放入邮箱时，你可以确定邮递员最终会将邮件递送给收件人。在这个类比中，RabbitMQ是邮箱、是邮局也是一个邮递员。
 
@@ -14,4 +15,4 @@ RabbitMQ、以及一般的信息收发，使用一些术语。
 ## "Hello World"
 在本教程的这一部分中，我们将用Java编写两个程序；发送单个消息的生产者，和接收消息并将它们打印出来的消费者。
 
-![](https://rabbitmq.com/img/tutorials/python-one.png)
+![producer-consumer](https://rabbitmq.com/img/tutorials/python-one.png)

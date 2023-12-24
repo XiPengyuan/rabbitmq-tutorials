@@ -16,6 +16,7 @@
 
     <modules>
         <module>hello-world</module>
+        <module>work-queues</module>
     </modules>
 
     <dependencyManagement>
