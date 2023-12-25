@@ -10,9 +10,10 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeoutException;
 
+import static com.xipengyuan.demo.rabbitmq.Constant.TASK_QUEUE_NAME;
+
 @Slf4j
 public class NewTask {
-    private static final String TASK_QUEUE_NAME = "task_queue";
 
     public static void main(String[] args) {
         ConnectionFactory factory = new ConnectionFactory();

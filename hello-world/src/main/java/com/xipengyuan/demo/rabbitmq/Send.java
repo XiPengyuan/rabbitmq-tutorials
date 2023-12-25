@@ -9,12 +9,13 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeoutException;
 
+import static com.xipengyuan.demo.rabbitmq.Constant.QUEUE_NAME;
+
 /**
  * 连接到RabbitMQ，发送一条消息，然后退出
  */
 @Slf4j
 public class Send {
-    private final static String QUEUE_NAME = "hello";
 
     public static void main(String[] args) {
         ConnectionFactory factory = new ConnectionFactory();

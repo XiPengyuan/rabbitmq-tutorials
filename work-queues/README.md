@@ -1,7 +1,7 @@
 # 2 Work queues
 
-## Work Queues
 
+## Work Queues
 ![work queues](https://rabbitmq.com/img/tutorials/python-two.png)
 
 在本教程中，我们将创建一个工作队列（_Work Queue_），用于在多个worker之间分配耗时的任务。

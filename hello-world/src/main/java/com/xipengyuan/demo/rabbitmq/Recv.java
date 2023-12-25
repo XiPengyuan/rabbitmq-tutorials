@@ -9,12 +9,13 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeoutException;
 
+import static com.xipengyuan.demo.rabbitmq.Constant.QUEUE_NAME;
+
 /**
  * 消费者监听来自RabbitMQ的消息，
  * 因此与发布单个消息的发布者不同，我们将保持消费者运行以监听消息并将它们打印出来
  */
 public class Recv {
-    private final static String QUEUE_NAME = "hello";
 
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
