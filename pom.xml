@@ -19,6 +19,7 @@
         <module>work-queues</module>
         <module>publish-subscribe</module>
         <module>routing</module>
+        <module>topics</module>
     </modules>
 
     <dependencyManagement>

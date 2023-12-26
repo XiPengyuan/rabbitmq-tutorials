@@ -1,7 +1,7 @@
 # 3 Publish/Subscribe
 
-
 ## Publish/Subscribe
+
 Work queue背后的假设是每个任务都恰好交付给一个worker。
 在这一部分中，我们将做一些完全不同的事情——我们将投递一个消息给多个消费者。这种模式被称为“发布/订阅”。
 
@@ -9,11 +9,12 @@ Work queue背后的假设是每个任务都恰好交付给一个worker。
 
 在我们的日志系统中，receiver程序的每个正在运行的副本都会收到消息。
 
-
 ## Exchange
+
 在教程的前面部分中，我们向队列发送消息和从队列接收消息。现在是时候介绍Rabbit中完整的messaging模型了。
 
 让我们快速回顾一下之前教程中介绍的内容：
+
 * 生产者（_producer_）是发送消息的user application。
 * 队列（_queue_）是存储消息的缓冲区（buffer）。
 * 消费者（_consumer_）是接收消息的user application。
@@ -40,8 +41,8 @@ fanout exchange非常简单。正如您可能从名称中猜到的那样，它�
 > ```
 > 第一个参数是exchange的名称。空字符串表示 default 或 _nameless_ exchange：消息将路由到由`routingKey`指定的名称的队列，如果存在的话。
 
-
 ## 临时队列
+
 当您想要在生产者和消费者之间共享队列时，为队列命名非常重要。
 
 但对我们的logger而言并非如此。
@@ -57,8 +58,8 @@ fanout exchange非常简单。正如您可能从名称中猜到的那样，它�
 
 你可以在[队列指南](https://www.rabbitmq.com/queues.html)中了解有关`exclusive`标志和其他队列属性的更多信息。
 
-
 ## Binding
+
 ![binding](https://www.rabbitmq.com/img/tutorials/bindings.png)
 
 exchange和queue之间的关系被称为 _binding_。
