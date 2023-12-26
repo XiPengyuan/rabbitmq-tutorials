@@ -9,12 +9,11 @@ import java.util.concurrent.TimeoutException;
 import static com.xipengyuan.demo.rabbitmq.Constant.EXCHANGE_NAME;
 
 /**
- * 可以启动多个消费者。
- * 每启动一个消费者，都会创建一个临时队列与fanout exchange绑定。
- * <p>
- * 生产者发布一条消息，每个消费者都会收到。
+ * 运行本消费者程序必须携带一个或多个参数以指定想要接收的log的级别，如：<br/>
+ * <code>java -cp .. ReceiveLogsDirect error</code><br/>
+ * <code>java -cp .. ReceiveLogsDirect info warning error</code>
  */
-public class ReceiveLogs {
+public class ReceiveLogsDirect {
 
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
@@ -22,16 +21,23 @@ public class ReceiveLogs {
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
 
-        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.FANOUT);
-        // 当我们不向queueDeclare()提供任何参数时，我们会创建一个具有生成的名称的非持久的、独占的、自动删除的queue
+        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
         String queueName = channel.queueDeclare().getQueue();
-        channel.queueBind(queueName, EXCHANGE_NAME, "");
 
+        if (args.length < 1) {
+            System.err.println("Usage: ReceiveLogsDirect [info] [warning] [error]");
+            System.exit(1);
+        }
+
+        for (String severity : args) {
+            // 我们将为我们感兴趣的每个severity创建一个新的binding
+            channel.queueBind(queueName, EXCHANGE_NAME, severity);
+        }
         System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
         DeliverCallback deliverCallback = (consumerTag, message) -> {
             String body = new String(message.getBody(), StandardCharsets.UTF_8);
-            System.out.println(" [x] Received '" + body + "'");
+            System.out.println(" [x] Received '" + message.getEnvelope().getRoutingKey() + "':'" + body + "'");
         };
         channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {});
     }

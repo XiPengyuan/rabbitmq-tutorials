@@ -11,6 +11,16 @@ import java.util.concurrent.TimeoutException;
 
 import static com.xipengyuan.demo.rabbitmq.Constant.TASK_QUEUE_NAME;
 
+/**
+ * 可以启动两个或更多消费者（Worker）<br/>
+ * <code>java -cp .. Worker</code>
+ *
+ * <p>
+ * 在没有prefetch控制的情况下，消息会均匀地分布给各个消费者。
+ *
+ * <p>
+ * 这里我们启用了{@code channel.basicQos(1)}。任务越轻的消费者会获得越多的消息；任务重的消费者获得的消息则会减少。
+ */
 public class Worker {
 
     public static void main(String[] args) throws IOException, TimeoutException {

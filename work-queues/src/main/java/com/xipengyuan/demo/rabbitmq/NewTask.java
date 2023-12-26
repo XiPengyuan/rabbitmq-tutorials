@@ -12,6 +12,16 @@ import java.util.concurrent.TimeoutException;
 
 import static com.xipengyuan.demo.rabbitmq.Constant.TASK_QUEUE_NAME;
 
+/**
+ * 传递参数以指定要发送的消息内容。
+ * 消息中的每个点（.）代表1秒钟的“工作量”，可以参见消费者的代码
+ * <p>
+ * <code>java -cp .. NewTask First message.</code><br/>
+ * <code>java -cp .. NewTask Second message..</code><br/>
+ * <code>java -cp .. NewTask Third message...</code><br/>
+ * <code>java -cp .. NewTask Fourth message....</code><br/>
+ * <code>java -cp .. NewTask Fifth message.....</code>
+ */
 @Slf4j
 public class NewTask {
 

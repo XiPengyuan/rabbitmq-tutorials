@@ -18,6 +18,7 @@
         <module>hello-world</module>
         <module>work-queues</module>
         <module>publish-subscribe</module>
+        <module>routing</module>
     </modules>
 
     <dependencyManagement>
