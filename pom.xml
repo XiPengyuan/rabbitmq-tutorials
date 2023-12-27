@@ -21,6 +21,7 @@
         <module>routing</module>
         <module>topics</module>
         <module>rpc</module>
+        <module>publisher-confirms</module>
     </modules>
 
     <dependencyManagement>
