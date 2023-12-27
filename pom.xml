@@ -20,6 +20,7 @@
         <module>publish-subscribe</module>
         <module>routing</module>
         <module>topics</module>
+        <module>rpc</module>
     </modules>
 
     <dependencyManagement>
